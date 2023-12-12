@@ -2,7 +2,7 @@
 % NECOFS TS Toolbox
 %
 % Create NECOFS TS data
-% Step 3 : Write all data into FVCOM T/S format
+% Step 2 : Write all data into FVCOM T/S format
 %          Quality control included.
 %
 % Siqi Li, Lu Wang, and Changsheng Chen
@@ -19,9 +19,9 @@ clc
 clear
 
 year = 2019;
-ffvcom = '../../restart/gom5_cold_restart_0001.nc';
+ffvcom = '../../restart/necofs_cold_restart_0001.nc';
 indir = '../output/step1/';
-outdir = '../output/step3_gom5/';
+outdir = '../output/step2_necofs/';
 dataset = ["aoml_bigelow"
            "bio"
            "cioos"
@@ -84,8 +84,8 @@ end
 % Write data out
 for im = 1 : 12
     
-    fxy = [outdir '/gom5_ts_' num2str(year) num2str(im, '%2.2d') '.xy'];
-    fdat = [outdir '/gom5_ts_' num2str(year) num2str(im, '%2.2d') '.dat'];
+    fxy = [outdir '/necofs_ts_' num2str(year) num2str(im, '%2.2d') '.xy'];
+    fdat = [outdir '/necofs_ts_' num2str(year) num2str(im, '%2.2d') '.dat'];
 
     write_ts(obs_qc{im}, fxy, fdat);
 

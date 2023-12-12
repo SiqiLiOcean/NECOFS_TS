@@ -20,8 +20,8 @@ clear
 
 year = 2019;
 ffvcom = '../../restart/gom5_cold_restart_0001.nc';
-indir = '../output/step3_gom5/';
-outdir = '../output/step4_final/';
+indir = '../output/step2_necofs/';
+outdir = '../output/step3_final/';
 dataset = ["aoml_bigelow"
            "bio"
            "cioos"
@@ -42,8 +42,8 @@ dataset = ["aoml_bigelow"
 % 2019-01
 %==========================================================================
 month = 1;
-fxy = [indir '/gom5_ts_' num2str(year) num2str(month, '%2.2d') '.xy'];
-fdat = [indir '/gom5_ts_' num2str(year) num2str(month, '%2.2d') '.dat'];
+fxy = [indir '/necofs_ts_' num2str(year) num2str(month, '%2.2d') '.xy'];
+fdat = [indir '/necofs_ts_' num2str(year) num2str(month, '%2.2d') '.dat'];
 obs = read_ts(fxy, fdat);
 %--------------------------------------------------------------------------
 % Observations are partly modified:
