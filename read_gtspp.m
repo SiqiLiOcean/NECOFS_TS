@@ -10,7 +10,8 @@
 % 
 % output :
 %
-% Siqi Li, SMAST
+% Siqi Li, Lu Wang, and Changsheng Chen
+% SMAST
 % 2021-09-18
 %
 % Updates:
