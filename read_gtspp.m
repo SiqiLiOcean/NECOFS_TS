@@ -10,8 +10,7 @@
 % 
 % output :
 %
-% Siqi Li, Lu Wang, and Changsheng Chen
-% SMAST
+% Siqi Li, SMAST
 % 2021-09-18
 %
 % Updates:
@@ -342,7 +341,9 @@ disp(['Output records : ' num2str(ii)])
     
     
 
-if ~Original
+if ~isempty(Original)
+    nodc = nodc0;
+else
 % Merge
 lon0 = [nodc0(:).lon]';
 lat0 = [nodc0(:).lat]';
@@ -367,19 +368,34 @@ for i = 1 : size(lonlat,1)
         itime = nodc0(k(j)).time;
         it = find(time==itime);
         
-        idepth = nodc0(k(j)).dep_t;
-        iz = find(ismember(depth, idepth));
-        T(sub2ind([nz,nt], iz, repmat(it,1,length(iz)))) = nodc0(k(j)).T;
+        dep_t = nodc0(k(j)).dep_t;
+        dep_s = nodc0(k(j)).dep_s;
+        t = nodc0(k(j)).T;
+        s = nodc0(k(j)).S;
+        for iz = 1 : nz
+            t_id = find(dep_t==depth(iz));
+            s_id = find(dep_s==depth(iz));
+            if ~isempty(t_id)
+                T(iz) = t(t_id(1));
+            end
+            if ~isempty(s_id)
+                S(iz) = s(s_id(1));
+            end
+        end
+        % idepth = nodc0(k(j)).dep_t;
+        % iz = find(ismember(depth, idepth));
+        % T(sub2ind([nz,nt], iz, repmat(it,1,length(iz)))) = nodc0(k(j)).T;
         
-        idepth = nodc0(k(j)).dep_s;
-        iz = find(ismember(depth, idepth));
-        S(sub2ind([nz,nt], iz, repmat(it,1,length(iz)))) = nodc0(k(j)).S;
+        % idepth = nodc0(k(j)).dep_s;
+        % iz = find(ismember(depth, idepth));
+        % S(sub2ind([nz,nt], iz, repmat(it,1,length(iz)))) = nodc0(k(j)).S;
         
     end
     nodc(i).T = T;
     nodc(i).S = S;
     
 end       
+end
 
 
 
