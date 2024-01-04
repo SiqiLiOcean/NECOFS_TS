@@ -40,10 +40,10 @@ for im = 1 : 12
     
 
     data0 = read_gtspp(fin, 'Log');
-    [data0.T] = data0.('TEMP');
-    [data0.S] = data0.('PSAL');
-    % Remove the useless variables
-    data0 = rmfield(data0, {'TEMP', 'PSAL'});
+    % [data0.T] = data0.('TEMP');
+    % [data0.S] = data0.('PSAL');
+    % % Remove the useless variables
+    % data0 = rmfield(data0, {'TEMP', 'PSAL'});
 
 
     %------------------------------------------------------
